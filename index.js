@@ -21,7 +21,7 @@ const questions = [
     {
         type: "input",
         name: "text",
-        message: "TEXY: Enter up to (3) characters",
+        message: "TEXY: Enter up to three characters",
 
     },
     {
@@ -45,20 +45,23 @@ const questions = [
 
 ];
         
-
+//function to write data
 function writeToFile(fileName, data) {
 	console.log("Writing [" + data + "] to file [" + fileName + "]")
     filesystem.writeFile(fileName, data, function (err) {
         if (err) {
             return console.log(err);
         }
-        console.log("Congratulations, you have Generated a logo.svg!");
+        console.log("successful svg logo!");
     });
 }
 
+
 async function init() {
     console.log("Starting init");
+	//empty sting variable that will store the contents of svg file
 	var svgString = "";
+	//string variable that will hold the name of an svg file that we want to load
 	var svg_file = "logo.svg";
 
     // Prompt the user for answers
@@ -75,13 +78,10 @@ async function init() {
         return;
 	}
 	console.log("User text: [" + user_text + "]");
-	//user font color
 	user_font_color = answers["text-color"];
 	console.log("User font color: [" + user_font_color + "]");
-	//user shape color
 	user_shape_color = answers.shape;
 	console.log("User shape color: [" + user_shape_color + "]");
-	//user shape type
 	user_shape_type = answers["pixel-image"];
 	console.log("User entered shape = [" + user_shape_type + "]");
 	
@@ -104,18 +104,36 @@ async function init() {
 	}
 	user_shape.setColor(user_shape_color);
 
-	// Create a new Svg instance and add the shape and text elements to it
-	var svg = new Svg();
-	svg.setTextElement(user_text, user_font_color);
-	svg.setShapeElement(user_shape);
-	svgString = svg.render();
+	// var svg = new Svg();
+	// svg.setTextElement(user_text, user_font_color);
+	// svg.setShapeElement(user_shape);
+	// svgString = svg.render();
 	
+	const svg = new Svg({
+		textElement: user_text,
+		fontColor: user_font_color,
+		shapeElement: user_shape
+	  });
+	  const svgString = svg.render();
+	  
 	//Print shape to log
-	console.log("Displaying shape:\n\n" + svgString);
-	//document.getElementById("svg_image").innerHTML = svgString;
+	// console.log("Displaying shape:\n\n" + svgString);
+	
 
-	console.log("Shape generation complete!");
-	console.log("Writing shape to file...");
-	writeToFile(svg_file, svgString); 
+	// console.log("Shape generation complete!");
+	// console.log("Writing shape to file...");
+	// writeToFile(svg_file, svgString); 
+
+
+	function logMessage(message) {
+		console.log(message);
+	  }
+	  
+	  logMessage("Displaying shape:\n\n" 
+	  + svgString);
+	  logMessage("Shape generation complete!");
+	  logMessage("Writing shape to file...");
+	  writeToFile(svg_file, svgString);
+	  
 }
 init()
