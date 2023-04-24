@@ -16,4 +16,4 @@ here are screenshots of working terminal
 
 link to video https://drive.google.com/file/d/1Qfx4p4eKrd9mRuxC2exgaGkkXnnCr2Rf/view?usp=sharing
 
-link to repository 
+link to repository https://github.com/codingprincess111/svg-logo-maker
