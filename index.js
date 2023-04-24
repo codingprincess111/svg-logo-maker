@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const {Circle, Square, Triangle} = require("./lib/shapes");
+//const filesystem = require('./node_modules')
 
 class Svg{
     constructor(){
@@ -21,7 +22,7 @@ const questions = [
     {
         type: "input",
         name: "text",
-        message: "TEXY: Enter up to three characters",
+        message: "TEXT: Enter up to three characters",
 
     },
     {
@@ -46,15 +47,30 @@ const questions = [
 ];
         
 //function to write data
+// function writeToFile(fileName, data) {
+// 	inquirer
+// 	console.log("Writing [" + data + "] to file [" + fileName + "]")
+//     writeFile(fileName, data, function (err) {
+//         if (err) {
+//             return console.log(err);
+//         }
+//         console.log("successful svg logo!");
+//     });
+// }
+
+//const inquirer = require('inquirer');
+const fs = require('fs');
+
 function writeToFile(fileName, data) {
-	console.log("Writing [" + data + "] to file [" + fileName + "]")
-    filesystem.writeFile(fileName, data, function (err) {
+    console.log("Writing [" + data + "] to file [" + fileName + "]")
+    fs.writeFile(fileName, data, function (err) {
         if (err) {
             return console.log(err);
         }
-        console.log("successful svg logo!");
+        console.log("Successfully wrote to file!");
     });
 }
+
 
 
 async function init() {
@@ -104,36 +120,38 @@ async function init() {
 	}
 	user_shape.setColor(user_shape_color);
 
-	// var svg = new Svg();
-	// svg.setTextElement(user_text, user_font_color);
-	// svg.setShapeElement(user_shape);
-	// svgString = svg.render();
+	var svg = new Svg();
+	svg.setTextElement(user_text, user_font_color);
+	svg.setShapeElement(user_shape);
+	svgString = svg.render();
 	
-	const svg = new Svg({
-		textElement: user_text,
-		fontColor: user_font_color,
-		shapeElement: user_shape
-	  });
-	  const svgString = svg.render();
+	// const svg = new Svg({
+	// 	textElement: user_text,
+	// 	fontColor: user_font_color,
+	// 	shapeElement: user_shape
+	//   });
+	//const svgString = svg.render();
 	  
 	//Print shape to log
-	// console.log("Displaying shape:\n\n" + svgString);
+	console.log("Displaying shape:\n\n" + svgString);
 	
 
-	// console.log("Shape generation complete!");
-	// console.log("Writing shape to file...");
-	// writeToFile(svg_file, svgString); 
+	console.log("Shape generation complete!");
+	console.log("Writing shape to file...");
+	writeToFile(svg_file, svgString); 
 
-
-	function logMessage(message) {
-		console.log(message);
-	  }
-	  
-	  logMessage("Displaying shape:\n\n" 
-	  + svgString);
-	  logMessage("Shape generation complete!");
-	  logMessage("Writing shape to file...");
-	  writeToFile(svg_file, svgString);
-	  
 }
 init()
+
+
+	// function logMessage(message) {
+	// 	console.log(message);
+	//   }
+	  
+	//   logMessage("Displaying shape:\n\n" 
+	//   + svgString);
+	//   logMessage("Shape generation complete!");
+	//   logMessage("Writing shape to file...");
+	//   writeToFile(svg_file, svgString);
+	  
+
