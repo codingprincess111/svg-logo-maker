@@ -10,10 +10,10 @@ User will run node index.js into the terminal that will prompt multiple question
 
 here are screenshots of working terminal 
 
-[screenshot](./images/node.run.test.png),
-[screenshot](./images/SVG.image.png),
-[screenshot](./images/svg.npmtest.png)
+[screenshot](./images/nodeprompts.png),
+[screenshot](./images/npmtest.png),
+[screenshot](./images/svg.png)
 
-link to video https://drive.google.com/file/d/1Qfx4p4eKrd9mRuxC2exgaGkkXnnCr2Rf/view?usp=sharing
+link to video https://drive.google.com/file/d/16HymuQ4MCff73gNQs4AnyNgvQPOcTBA9/view?usp=sharing 
 
 link to repository https://github.com/codingprincess111/svg-logo-maker
